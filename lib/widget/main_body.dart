@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trivia_flutter_demo/model/question.dart';
+import 'package:trivia_flutter_demo/widget/question_container.dart';
 
 class MainBody extends StatefulWidget {
   MainBody({Key key, @required this.question, this.title}) : super(key: key);
@@ -17,25 +18,17 @@ class _BodyState extends State<MainBody> {
       children: <Widget>[
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[Text(widget.question.question)],
+          children: <Widget>[
+            QuestionContainer(question: widget.question.question),
+          ],
         ),
         Container(
           child: Column(
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Text(widget.question.answersList[0].text),
-                  Text(widget.question.answersList[1].text),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Text(widget.question.answersList[2].text),
-                  Text(widget.question.answersList[3].text),
-                ],
-              ),
+              Text(widget.question.answersList[0].text),
+              Text(widget.question.answersList[1].text),
+              Text(widget.question.answersList[2].text),
+              Text(widget.question.answersList[3].text),
             ],
           ),
         ),

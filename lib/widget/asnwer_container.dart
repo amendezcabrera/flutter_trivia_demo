@@ -18,22 +18,17 @@ class _AnswerContainerState extends State<AnswerContainer> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: GestureDetector(
-        onTapUp: (tapUpDetails){
-          print('Correct? ${widget.answer.correct ? 'Yes' : 'No'}');
-        },
-        child: Container(
-          color: widget.color,
-          child: SizedBox(
-            width: double.maxFinite,
-            height: 60.0,
-            child: Center(
-              child: Text(
-                widget.answer.text,
-                style: TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                ),
+      child: Container(
+        color: widget.color,
+        child: SizedBox(
+          width: double.maxFinite,
+          height: 60.0,
+          child: Center(
+            child: Text(
+              widget.answer.text,
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),

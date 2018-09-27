@@ -32,9 +32,14 @@ class _BodyState extends State<MainBody> {
             } else if (widget.question.difficulty == 'hard') {
               color = Colors.redAccent;
             }
-            return AnswerContainer(
-              answer: questionAnswer,
-              color: color,
+            return GestureDetector(
+              onTapDown: (tapDownDetails) {
+                print('Correct? ${questionAnswer.correct ? 'Yes' : 'No'}');
+              },
+              child: AnswerContainer(
+                answer: questionAnswer,
+                color: color,
+              ),
             );
           }).toList()),
         ),
@@ -42,3 +47,5 @@ class _BodyState extends State<MainBody> {
     );
   }
 }
+
+typedef OnQuestionAnsweredCallback = void Function();

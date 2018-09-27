@@ -19,8 +19,8 @@ class _AnswerContainerState extends State<AnswerContainer> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: () {
-          print('Correcto?: ${widget.answer.correct ? 'Yes' : 'No'}');
+        onTapUp: (tapUpDetails){
+          print('Correct? ${widget.answer.correct ? 'Yes' : 'No'}');
         },
         child: Container(
           color: widget.color,

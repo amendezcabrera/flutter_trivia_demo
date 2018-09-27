@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trivia_flutter_demo/model/question.dart';
+import 'package:trivia_flutter_demo/widget/asnwer_container.dart';
 import 'package:trivia_flutter_demo/widget/question_container.dart';
 
 class MainBody extends StatefulWidget {
@@ -24,13 +25,18 @@ class _BodyState extends State<MainBody> {
         ),
         Container(
           child: Column(
-            children: <Widget>[
-              Text(widget.question.answersList[0].text),
-              Text(widget.question.answersList[1].text),
-              Text(widget.question.answersList[2].text),
-              Text(widget.question.answersList[3].text),
-            ],
-          ),
+              children: widget.question.answersList.map((questionAnswer) {
+            MaterialAccentColor color = Colors.greenAccent;
+            if (widget.question.difficulty == 'medium') {
+              color = Colors.orangeAccent;
+            } else if (widget.question.difficulty == 'hard') {
+              color = Colors.redAccent;
+            }
+            return AnswerContainer(
+              answer: questionAnswer,
+              color: color,
+            );
+          }).toList()),
         ),
       ],
     );

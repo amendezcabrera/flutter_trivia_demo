@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
           future: Repository.get().fetchQuestion(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             Question question = snapshot.data;
-            return MainBody(question: question);
+            return MainBody(question: question,);
           }),
       floatingActionButton: new FloatingActionButton(
         tooltip: 'Increment',

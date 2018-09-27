@@ -16,11 +16,11 @@ class Question {
       @required this.difficulty,
       @required this.answersList});
 
-  Question.fromJson(Map<String, dynamic> json, List<Answer> answersList)
+  Question.fromJson(Map<String, dynamic> json, List<Answer> receivedAnswersList)
       : question = json[KEY_RESULTS][0][KEY_QUESTION],
         category = json[KEY_RESULTS][0][KEY_CATEGORY],
         difficulty = json[KEY_RESULTS][0][KEY_DIFFICULTY],
-        this.answersList = answersList;
+        answersList = receivedAnswersList;
 
   @override
   String toString() {

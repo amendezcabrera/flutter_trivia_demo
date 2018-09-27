@@ -9,11 +9,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Open Trivia',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new MyHomePage(title: 'Flutter Demo Home Page'),
+      home: new MyHomePage(title: 'Open Trivia'),
     );
   }
 }
@@ -33,14 +33,14 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: new AppBar(
         title: new Text(widget.title),
       ),
-      body: FutureBuilder(
-          future: Repository.get().fetchQuestion(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            Question question = snapshot.data;
-            return MainBody(question: question,);
-          }),
+      body: _newQuestion(),
       floatingActionButton: new FloatingActionButton(
-        tooltip: 'Increment',
+        onPressed: () {
+          setState(() {
+            _newQuestion();
+          });
+        },
+        tooltip: 'Next question',
         child: new Icon(Icons.skip_next),
       ),
     );
@@ -49,5 +49,16 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+  }
+
+  Widget _newQuestion() {
+    return FutureBuilder(
+        future: Repository.get().fetchQuestion(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          Question question = snapshot.data;
+          return MainBody(
+            question: question,
+          );
+        });
   }
 }

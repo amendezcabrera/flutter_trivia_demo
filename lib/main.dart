@@ -58,6 +58,11 @@ class _MyHomePageState extends State<MyHomePage> {
           Question question = snapshot.data;
           return MainBody(
             question: question,
+            onQuestionAnswered: () {
+              setState(() {
+                _newQuestion();
+              });
+            },
           );
         });
   }

@@ -4,9 +4,10 @@ import 'package:trivia_flutter_demo/widget/asnwer_container.dart';
 import 'package:trivia_flutter_demo/widget/question_container.dart';
 
 class MainBody extends StatefulWidget {
-  MainBody({Key key, @required this.question, this.title}) : super(key: key);
+  MainBody({Key key, @required this.question, this.onQuestionAnswered, this.title}) : super(key: key);
   final String title;
   final Question question;
+  final OnQuestionAnsweredCallback onQuestionAnswered;
 
   @override
   _BodyState createState() => new _BodyState();
@@ -34,6 +35,7 @@ class _BodyState extends State<MainBody> {
             }
             return GestureDetector(
               onTapDown: (tapDownDetails) {
+                widget.onQuestionAnswered();
                 print('Correct? ${questionAnswer.correct ? 'Yes' : 'No'}');
               },
               child: AnswerContainer(

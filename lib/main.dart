@@ -115,8 +115,8 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-              width: 50.0,
-              height: 50.0,
+              width: 40.0,
+              height: 40.0,
               child: CircularProgressIndicator(
                 valueColor: new AlwaysStoppedAnimation<Color>(Colors.blueGrey),
               ),
@@ -127,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 'Loading',
                 style: TextStyle(
                   color: Colors.blueGrey,
-                  fontSize: 30.0,
+                  fontSize: 26.0,
                   fontWeight: FontWeight.w400,
                 ),
               ),

@@ -34,13 +34,17 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: null,
       body: _newQuestion(),
       floatingActionButton: new FloatingActionButton(
+        backgroundColor: Colors.blueGrey,
         onPressed: () {
           setState(() {
             _newQuestion();
           });
         },
         tooltip: 'Next question',
-        child: new Icon(Icons.skip_next),
+        child: new Icon(
+          Icons.skip_next,
+          color: Colors.white,
+        ),
       ),
     );
   }

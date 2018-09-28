@@ -59,13 +59,21 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Expanded(
-                child: MainBody(
-                  question: question,
-                  onQuestionAnswered: () {
-                    setState(() {
-                      _newQuestion();
-                    });
-                  },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Center(
+                      child: MainBody(
+                        question: question,
+                        onQuestionAnswered: () {
+                          setState(() {
+                            _newQuestion();
+                          });
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               )
             ],

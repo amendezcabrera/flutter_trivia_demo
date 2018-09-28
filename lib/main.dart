@@ -58,43 +58,83 @@ class _MyHomePageState extends State<MyHomePage> {
     return FutureBuilder(
         future: Repository.get().fetchQuestion(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          Question question = snapshot.data;
-          return SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(0.0, 40.0, 0.0, 0.0),
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    question.category,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.blueGrey,
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+            case ConnectionState.waiting:
+            case ConnectionState.active:
+              return _getLoadingWidget();
+            case ConnectionState.done:
+              return _getMainWidget(snapshot.data);
+          }
+        });
+  }
 
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        QuestionContainer(question: question.question),
-                      ],
-                    ),
-                  ),
-                  AnswersContainer(
-                    question: question,
-                    onQuestionAnswered: () {
-                      setState(() {
-                        _newQuestion();
-                      });
-                    },
-                  ),
+  Widget _getMainWidget(question) {
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0.0, 40.0, 0.0, 0.0),
+        child: Column(
+          children: <Widget>[
+            Text(
+              question.category,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.blueGrey,
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  QuestionContainer(question: question.question),
                 ],
               ),
             ),
-          );
-        });
+            AnswersContainer(
+              question: question,
+              onQuestionAnswered: () {
+                setState(() {
+                  _newQuestion();
+                });
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _getLoadingWidget() {
+    return SafeArea(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              width: 50.0,
+              height: 50.0,
+              child: CircularProgressIndicator(
+                valueColor: new AlwaysStoppedAnimation<Color>(Colors.blueGrey),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 0.0),
+              child: Text(
+                'Loading',
+                style: TextStyle(
+                  color: Colors.blueGrey,
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

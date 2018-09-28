@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trivia_flutter_demo/model/question.dart';
 import 'package:trivia_flutter_demo/repository.dart';
-import 'package:trivia_flutter_demo/widget/amswers_container.dart';
+import 'package:trivia_flutter_demo/widget/answers_container.dart';
 import 'package:trivia_flutter_demo/widget/question_container.dart';
 
 void main() => runApp(new MyApp());

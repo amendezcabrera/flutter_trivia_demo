@@ -26,9 +26,11 @@ class _AnswerContainerState extends State<AnswerContainer> {
           child: Center(
             child: Text(
               widget.answer.text,
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
             ),
           ),

@@ -21,6 +21,7 @@ class IncorrectAnswer extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],

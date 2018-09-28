@@ -22,16 +22,10 @@ class _BodyState extends State<MainBody> {
   Widget build(BuildContext context) {
     return new Column(
       children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            QuestionContainer(question: widget.question.question),
-          ],
-        ),
         Container(
           child: Column(
               children: widget.question.answersList.map((questionAnswer) {
-            MaterialAccentColor color = Colors.greenAccent;
+            Color color = Colors.green;
             if (widget.question.difficulty == 'medium') {
               color = Colors.orangeAccent;
             } else if (widget.question.difficulty == 'hard') {

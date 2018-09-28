@@ -56,13 +56,21 @@ class _MyHomePageState extends State<MyHomePage> {
         future: Repository.get().fetchQuestion(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           Question question = snapshot.data;
-          return MainBody(
-            question: question,
-            onQuestionAnswered: () {
-              setState(() {
-                _newQuestion();
-              });
-            },
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                child: MainBody(
+                  question: question,
+                  onQuestionAnswered: () {
+                    setState(() {
+                      _newQuestion();
+                    });
+                  },
+                ),
+              )
+            ],
           );
         });
   }

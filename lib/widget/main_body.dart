@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:trivia_flutter_demo/model/question.dart';
 import 'package:trivia_flutter_demo/widget/asnwer_container.dart';
+import 'package:trivia_flutter_demo/widget/correct_answer.dart';
+import 'package:trivia_flutter_demo/widget/incorrect_answer.dart';
 import 'package:trivia_flutter_demo/widget/question_container.dart';
 
 class MainBody extends StatefulWidget {
@@ -38,7 +40,14 @@ class _BodyState extends State<MainBody> {
             return GestureDetector(
               onTapDown: (tapDownDetails) {
                 widget.onQuestionAnswered();
-                print('Correct? ${questionAnswer.correct ? 'Yes' : 'No'}');
+                setState(() {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) => questionAnswer.correct
+                        ? CorrectAnswer()
+                        : IncorrectAnswer(),
+                  );
+                });
               },
               child: AnswerContainer(
                 answer: questionAnswer,

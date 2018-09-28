@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trivia_flutter_demo/model/question.dart';
 import 'package:trivia_flutter_demo/repository.dart';
-import 'package:trivia_flutter_demo/widget/main_body.dart';
+import 'package:trivia_flutter_demo/widget/amswers_container.dart';
 import 'package:trivia_flutter_demo/widget/question_container.dart';
 
 void main() => runApp(new MyApp());
@@ -60,14 +60,11 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           Question question = snapshot.data;
           return SafeArea(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                // TODO Show category as title with a top padding
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 10.0),
-                  child: Text(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0.0, 40.0, 0.0, 0.0),
+              child: Column(
+                children: <Widget>[
+                  Text(
                     question.category,
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -76,32 +73,26 @@ class _MyHomePageState extends State<MyHomePage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    QuestionContainer(question: question.question),
-                  ],
-                ),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Center(
-                        child: MainBody(
-                          question: question,
-                          onQuestionAnswered: () {
-                            setState(() {
-                              _newQuestion();
-                            });
-                          },
-                        ),
-                      ),
-                    ],
+
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        QuestionContainer(question: question.question),
+                      ],
+                    ),
                   ),
-                )
-              ],
+                  AnswersContainer(
+                    question: question,
+                    onQuestionAnswered: () {
+                      setState(() {
+                        _newQuestion();
+                      });
+                    },
+                  ),
+                ],
+              ),
             ),
           );
         });

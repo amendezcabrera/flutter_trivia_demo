@@ -3,10 +3,9 @@ import 'package:trivia_flutter_demo/model/question.dart';
 import 'package:trivia_flutter_demo/widget/asnwer_container.dart';
 import 'package:trivia_flutter_demo/widget/correct_answer.dart';
 import 'package:trivia_flutter_demo/widget/incorrect_answer.dart';
-import 'package:trivia_flutter_demo/widget/question_container.dart';
 
-class MainBody extends StatefulWidget {
-  MainBody(
+class AnswersContainer extends StatefulWidget {
+  AnswersContainer(
       {Key key, @required this.question, this.onQuestionAnswered, this.title})
       : super(key: key);
   final String title;
@@ -17,7 +16,7 @@ class MainBody extends StatefulWidget {
   _BodyState createState() => new _BodyState();
 }
 
-class _BodyState extends State<MainBody> {
+class _BodyState extends State<AnswersContainer> {
   @override
   Widget build(BuildContext context) {
     return new Column(

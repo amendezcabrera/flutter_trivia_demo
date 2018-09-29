@@ -1,31 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:trivia_flutter_demo/model/answer.dart';
 
-class AnswerContainer extends StatefulWidget {
-  AnswerContainer(
-      {Key key, @required this.answer, @required this.color, this.title})
-      : super(key: key);
+class AnswerContainer extends StatelessWidget {
   final String title;
   final Answer answer;
   final Color color;
 
-  @override
-  _AnswerContainerState createState() => new _AnswerContainerState();
-}
 
-class _AnswerContainerState extends State<AnswerContainer> {
+  AnswerContainer({this.title, @required this.answer, @required this.color});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        color: widget.color,
+        color: color,
         child: SizedBox(
           width: double.maxFinite,
           height: 60.0,
           child: Center(
             child: Text(
-              widget.answer.text,
+              answer.text,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 18.0,

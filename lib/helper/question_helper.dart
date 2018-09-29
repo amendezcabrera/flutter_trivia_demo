@@ -34,8 +34,7 @@ Future<Question> retrieveQuestion() async {
       incorrectAnswer3
     ];
     answersList.shuffle(new Random());
-    question =
-        Question.fromJson(jsonResponse, answersList);
+    question = Question.fromJson(jsonResponse, answersList);
   } catch (error) {
     return error;
   }

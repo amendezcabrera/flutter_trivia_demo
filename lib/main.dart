@@ -40,7 +40,6 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.blueGrey,
         onPressed: () {
           setState(() {
-            _newQuestion();
           });
         },
         tooltip: 'Next question',
@@ -100,7 +99,6 @@ class _MyHomePageState extends State<MyHomePage> {
               question: question,
               onQuestionAnswered: () {
                 setState(() {
-                  _newQuestion();
                 });
               },
             ),
